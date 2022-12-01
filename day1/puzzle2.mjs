@@ -6,10 +6,12 @@ import {
     push,
     reduce,
     map,
-    max,
     sum,
+    sort,
+    get,
     strToInt,
     flatMap,
+    higestToLowest,
 } from "../utils/index.mjs";
 
 function format(data) {
@@ -33,6 +35,7 @@ function sums(data) {
 
 const data = await getInput('./day1/input.txt');
 const input = convert(format(textToArray(data)));
-const output = max(sums(input));
+const sorted = get(sort(sums(input), higestToLowest), 3);
+const output = reduce(sum, 0)(sorted);
 
 console.log(output)
