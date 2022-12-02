@@ -77,3 +77,15 @@ export function flatMap(arr) {
 
     return fn => arr.flatMap(fn);
 }
+
+export function split(delimiter) {
+    return str => {
+        if (!str.length) throw new Error('Unable to split an empty string');
+
+        return str.split(delimiter);
+    }
+}
+
+export function copy(obj) {
+    return { ...obj };
+}
