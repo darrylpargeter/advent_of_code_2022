@@ -86,6 +86,19 @@ export function split(delimiter) {
     }
 }
 
+export function flat(arr, depth = 1) {
+    return arr.flat(depth);
+} 
+
+export function filter(arr, fn) {
+    return arr.filter(fn);
+}
+
+export function slice(arr, start, end) {
+    const copy = [...arr];
+    return copy.slice(start, end);
+}
+
 export function copy(obj) {
     return { ...obj };
 }
