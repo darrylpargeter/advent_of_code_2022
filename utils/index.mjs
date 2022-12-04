@@ -103,5 +103,11 @@ export function copy(obj) {
     return { ...obj };
 }
 
-export function slidingWindow() {
+export function range(start, end) {
+    const output = [];
+    for (let i = start; i <= end; i += 1) {
+        output.push(i);
+    }
+
+    return output;
 }
