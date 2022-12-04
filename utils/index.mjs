@@ -102,3 +102,6 @@ export function slice(arr, start, end) {
 export function copy(obj) {
     return { ...obj };
 }
+
+export function slidingWindow() {
+}
