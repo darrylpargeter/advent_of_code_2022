@@ -4,12 +4,13 @@ export async function getInput(path) {
     return readFile(path, { encoding: 'utf8' });
 }
 
-function splitLinesToArray(file) {
-    return file.trim().split(/\r?\n/);
+function splitLinesToArray(file, trim = true) {
+    if (trim) return file.trim().split(/\r?\n/);
+    return file.split(/\r?\n/);
 }
 
-export function textToArray(file) {
-    const array = splitLinesToArray(file);
+export function textToArray(file, trim) {
+    const array = splitLinesToArray(file, trim);
     return array;
 }
 
@@ -29,8 +30,18 @@ export function higestToLowest(a,b) {
 // Arr function
 export function tail(arr) {
     if (!Array.isArray(arr)) throw new Error('Type is not an array');
+    const t = arr[arr.length - 1];
+    const [rest] = slice(arr, 0, arr.length - 1);
 
-    return arr[arr.length - 1];
+    return [t, rest];
+}
+
+export function head(arr) {
+    if (!Array.isArray(arr)) throw new Error('Type is not an array');
+    const t = arr[0];
+    const [rest] = slice(arr, 1, arr.length);
+
+    return [t, rest];
 }
 
 export function pop(arr) {
@@ -48,6 +59,11 @@ export function push(arr, value) {
 export function map(arr, fn) {
     if (!Array.isArray(arr)) throw new Error('Type is not an array');
     return arr.map(fn);
+}
+
+export function each(arr, fn) {
+    if (!Array.isArray(arr)) throw new Error('Type is not an array');
+    return arr.forEach(fn);
 }
 
 export function reduce(fn, base) {
@@ -96,7 +112,9 @@ export function filter(arr, fn) {
 
 export function slice(arr, start, end) {
     const copy = [...arr];
-    return copy.slice(start, end);
+    const selected = copy.slice(start, end);
+    const rest = copy.slice(end, arr.length);
+    return [selected, rest]
 }
 
 export function copy(obj) {
@@ -110,4 +128,12 @@ export function range(start, end) {
     }
 
     return output;
+}
+
+export function objValuesToArr(obj) {
+    return Object.values(obj);
+}
+
+export function join(delimiter) {
+    return arr => arr.join(delimiter);
 }
