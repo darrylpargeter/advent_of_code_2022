@@ -1,6 +1,7 @@
 import { getInput, split, slice, map } from '../utils/index.mjs';
 
 const testData = [
+    'mjqjpqmgbljsphdztnvjfqwrcgsmlb',
     'bvwbjplbgvbhsrlpgdmjqwftvncz',
     'nppdvjthqldpwncqszvftbrmjlhg',
     'nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg',
@@ -21,5 +22,5 @@ function window(arr, idx=0, size) {
     return window(arr, idx + 1, size);
 }
 
-const output = window(input, 0, 4);
+const output = window(input, 0, 14);
 console.log(output)
