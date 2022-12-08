@@ -1,4 +1,4 @@
-import { getInput, split, slice, map } from '../utils/index.mjs';
+import { getInput, split, slice } from '../utils/index.mjs';
 
 const data = await getInput('./day6/input.txt');
 const input = split('')(data.trim());
@@ -8,9 +8,8 @@ function window(arr, size, idx=0) {
 
     const [extract] = slice(arr, idx, idx + size);
     const set = new Set(extract);
-    if (set.size === size) {
-        return { idx, size: idx + size };
-    }
+
+    if (set.size === size) idx + size;
 
     return window(arr, size, idx + 1);
 }
